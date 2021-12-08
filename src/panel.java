@@ -12,9 +12,9 @@ public class panel extends JPanel implements ActionListener{
     population pop;
     int i = 0;
     public panel() {
-        timer = new Timer(5, this);
+        timer = new Timer(10, this);
         timer.start();
-        pop = new population(10);
+        pop = new population(100);
         for (int j = 0; j < pop.dots.length; j++) {
             System.out.println(Arrays.deepToString(pop.dots[j].brain.directions));// for debugging
         }
@@ -27,6 +27,8 @@ public class panel extends JPanel implements ActionListener{
         super.paintComponent(g);
         g.setColor(Color.red);
         g.fillRect(246, 4, 8, 8); //drawing goal
+        g.setColor(Color.cyan);
+        g.fillRect(500/4, 500/4, 250, 25);
         g.setColor(Color.black);
         for (int j = 0; j < pop.dots.length; j++) {// drawing each dot on one call of the task update
             g.fillRect(pop.dots[j].brain.directions[i][0]-2, pop.dots[j].brain.directions[i][1]-2, 4, 4);
@@ -35,7 +37,7 @@ public class panel extends JPanel implements ActionListener{
                 //    System.out.println(pop.dots[j].fitFunc(pop.dots));
                 //}
                 if (j >= pop.dots.length-1){
-                    pop = new population(10, pop.dots[j].fitFunc(pop.dots));
+                    pop = new population(100, pop.fitFunc(pop.dots));
                     i = 0;
                 }
             }

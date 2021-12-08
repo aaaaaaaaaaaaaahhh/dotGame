@@ -16,8 +16,8 @@ public class dot {
         brain = new brain(400);
         for (int i = 0; i < brain.numDirects; i++) {
             brain.directions[i] = Arrays.copyOf(original.brain.directions[i], original.brain.directions[i].length);
-            System.out.println("thing: " + Arrays.toString(original.brain.directions[i]));
-            System.out.println(Arrays.toString(brain.directions[i]));
+            //System.out.println("thing: " + Arrays.toString(original.brain.directions[i]));
+            //System.out.println(Arrays.toString(brain.directions[i]));
         }
     }
 
@@ -49,33 +49,14 @@ public class dot {
                 brain.directions[i+1][1] = brain.directions[i][1];
                 brain.directions[i+1][0] = brain.directions[i][0];
             }
+
+            if ((brain.directions[i][1] >= (500/4) && brain.directions[i][1] <= (500/4)+25) && (brain.directions[i][0] >= (500/4) && brain.directions[i][0] <= (500/4)+250)){
+                //brain.directions[i][1] = (500/4)+12;
+                //brain.directions[i][0] = 250;
+                brain.directions[i+1][1] = brain.directions[i][1];
+                brain.directions[i+1][0] = brain.directions[i][0];
+            }
         }
     }
 
-    public dot fitFunc(dot[] dots){
-        double[] dotScores = new double[dots.length];
-        dot best = new dot();
-        double bestScore = 0;
-        for (int i = 0; i < dots.length; i++) {
-            int[] finalDirection = dots[i].brain.directions[dots[i].brain.directions.length-1];
-            double score = Math.sqrt(Math.pow((finalDirection[0]-250), 2) + Math.pow((finalDirection[1]-8), 2));
-            dotScores[i] = score;
-        }
-
-        for (double dotScore : dotScores) {
-            if (dotScore < dotScores.length - 1) { // so there is no index error
-                if (dotScore >= bestScore) {
-                    bestScore = dotScore;
-                }
-            }
-        }
-
-        for (int i = 0; i < dotScores.length; i++) {
-            if (dotScores[i] == bestScore){
-                best = dots[i];
-            }
-        }
-
-        return best;
-    }
 }
