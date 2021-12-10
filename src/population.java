@@ -44,28 +44,33 @@ public class population {
         System.out.println("fit func");
         double[] dotScores = new double[dots.length];
         dot best = new dot();
-        double bestScore = 500;
+        double bestScore = 1000;
         for (int i = 0; i < dots.length; i++) {
             int[] finalDirection = dots[i].brain.directions[dots[i].brain.directions.length-1];
             double score = Math.sqrt(Math.pow((finalDirection[0]-250), 2) + Math.pow((finalDirection[1]-8), 2));
             dotScores[i] = score;
         }
-
-        for (double score : dotScores) {
-            if (score < dotScores.length - 1) { // so there is no index error
-                if (score <= bestScore) {
-                    bestScore = score;
+        System.out.println("bestScore: " + bestScore);
+        for (int i = 0; i < dotScores.length; i++) {
+            if (i < dotScores.length - 1) { // so there is no index error
+                System.out.println("bestScore: " + bestScore);
+                if (dotScores[i] <= bestScore) {
+                    bestScore = dotScores[i];
+                    best = dots[i];
+                    System.out.println("bestScore: " + bestScore);
+                    System.out.println("dot best score: " + dotScores[i]);
                 }
             }
         }
 
-        for (int i = 0; i < dotScores.length; i++) {
-            if (dotScores[i] == bestScore){
+        /*for (int i = 0; i < dotScores.length; i++) {
+            if (dotScores[i] <= bestScore){
                 best = dots[i];
                 System.out.println(Arrays.deepToString(dots[i].brain.directions));
-                System.out.println("best score: " + dotScores[i]);
+                System.out.println("bestScore: " + bestScore);
+                System.out.println("dot best score: " + dotScores[i]);
             }
-        }
+        }*/
         System.out.println(Arrays.deepToString(best.brain.directions));
         return best;
     }

@@ -23,13 +23,13 @@ public class dot {
 
     public void collisions(){
         for (int i = 0; i < brain.directions.length-1; i++) {
-            if (brain.directions[i][0] <= 0 || brain.directions[i][0] <= 4) {
-                brain.directions[i][0] = 4;
+            if (brain.directions[i][0] <= 0 || brain.directions[i][0] <= 2) {
+                brain.directions[i][0] = 2;
                 brain.directions[i+1][0] = brain.directions[i][0];
                 brain.directions[i+1][1] = brain.directions[i][1];
             }
-            if(brain.directions[i][0] >= 500 || brain.directions[i][0] >= 498){
-                brain.directions[i][0] = 498;
+            if(brain.directions[i][0] >= 500 || brain.directions[i][0] >= 483){
+                brain.directions[i][0] = 483;
                 brain.directions[i+1][0] = brain.directions[i][0];
                 brain.directions[i+1][1] = brain.directions[i][1];
             }
@@ -38,8 +38,8 @@ public class dot {
                 brain.directions[i+1][1] = brain.directions[i][1];
                 brain.directions[i+1][0] = brain.directions[i][0];
             }
-            if (brain.directions[i][1] >= 500 || brain.directions[i][1] >= 474) {
-                brain.directions[i][1] = 474;// top bar is included in frame, easiest solution
+            if (brain.directions[i][1] >= 500 || brain.directions[i][1] >= 460) {
+                brain.directions[i][1] = 460;// top bar is included in frame, easiest solution
                 brain.directions[i+1][1] = brain.directions[i][1];
                 brain.directions[i+1][0] = brain.directions[i][0];
             }

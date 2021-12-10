@@ -13,7 +13,7 @@ public class game {
         frame.setSize(500, 500);
         frame.setLayout(new GridLayout(1, 1));
         frame.add(panel);
-        frame.setResizable(false);
+        //frame.setResizable(false);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
