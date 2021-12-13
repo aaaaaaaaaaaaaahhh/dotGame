@@ -14,10 +14,10 @@ public class population {
         }
     }
 
-    public population(int numPop, dot original){
+    public population(int numPop, dot[] parentPop){
         dots = new dot[numPop];
         for (int i = 0; i < numPop; i++) {
-            dots[i] = new dot(original);
+            dots[i] = new dot(getParent(parentPop));
         }
         mutate();
         for (int i = 0; i < numPop; i++) {
@@ -40,37 +40,30 @@ public class population {
         }
     }
 
-    public dot fitFunc(dot[] dots){
-        System.out.println("fit func");
+
+
+    public dot getParent(dot[] dots){
         double[] dotScores = new double[dots.length];
         dot best = new dot();
-        double bestScore = 1000;
+        double fitnessSum = 0;
         for (int i = 0; i < dots.length; i++) {
-            int[] finalDirection = dots[i].brain.directions[dots[i].brain.directions.length-1];
-            double score = Math.sqrt(Math.pow((finalDirection[0]-250), 2) + Math.pow((finalDirection[1]-8), 2));
-            dotScores[i] = score;
+            dotScores[i] = dots[i].fitness;
+            fitnessSum += dots[i].fitness;
         }
-        System.out.println("bestScore: " + bestScore);
-        for (int i = 0; i < dotScores.length; i++) {
-            if (i < dotScores.length - 1) { // so there is no index error
-                System.out.println("bestScore: " + bestScore);
-                if (dotScores[i] <= bestScore) {
-                    bestScore = dotScores[i];
-                    best = dots[i];
-                    System.out.println("bestScore: " + bestScore);
-                    System.out.println("dot best score: " + dotScores[i]);
-                }
+        System.out.println(fitnessSum);
+
+
+        double runningSum = 0;
+        Random rd = new Random();
+        double randNum = rd.nextDouble() * fitnessSum;
+        for (int i = 0; i < dots.length; i++) {
+            runningSum += dots[i].fitness;
+            if (runningSum > randNum){
+                return dots[i];
             }
         }
 
-        /*for (int i = 0; i < dotScores.length; i++) {
-            if (dotScores[i] <= bestScore){
-                best = dots[i];
-                System.out.println(Arrays.deepToString(dots[i].brain.directions));
-                System.out.println("bestScore: " + bestScore);
-                System.out.println("dot best score: " + dotScores[i]);
-            }
-        }*/
+
         System.out.println(Arrays.deepToString(best.brain.directions));
         return best;
     }
