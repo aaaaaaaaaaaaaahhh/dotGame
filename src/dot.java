@@ -8,14 +8,15 @@ public class dot {
     double thisScore;
     double fitness;
     public dot(){
-        brain = new brain(400);
+        brain = new brain(800);
         brain.randBrain();
+        collisions();
         calcFit();
         thisScore = 500;
     }
 
     public dot(dot original){
-        brain = new brain(400);
+        brain = new brain(800);
         for (int i = 0; i < brain.numDirects; i++) {
             brain.directions[i] = Arrays.copyOf(original.brain.directions[i], original.brain.directions[i].length);
             //System.out.println("thing: " + Arrays.toString(original.brain.directions[i]));
@@ -26,7 +27,7 @@ public class dot {
 
     public void calcFit(){
         int[] finalDirection = brain.directions[brain.directions.length-1];
-        double distToGoal = Math.sqrt(Math.pow((finalDirection[0]-250), 2) + Math.pow((finalDirection[1]-8), 2));
+        double distToGoal = Math.sqrt(Math.pow((finalDirection[0]-500), 2) + Math.pow((finalDirection[1]-8), 2));
         fitness = 1/(distToGoal*distToGoal);
     }
 
@@ -52,14 +53,14 @@ public class dot {
                 brain.directions[i+1][1] = brain.directions[i][1];
                 brain.directions[i+1][0] = brain.directions[i][0];
             }
-            if ((brain.directions[i][1] >= 4 && brain.directions[i][1] <= 12) && (brain.directions[i][0] >= 246 && brain.directions[i][0] <= 254)) {
+            if ((brain.directions[i][1] >= 4 && brain.directions[i][1] <= 12) && (brain.directions[i][0] >= 496 && brain.directions[i][0] <= 504)) {
                 brain.directions[i][1] = 8;
-                brain.directions[i][0] = 250;
+                brain.directions[i][0] = 500;
                 brain.directions[i+1][1] = brain.directions[i][1];
                 brain.directions[i+1][0] = brain.directions[i][0];
             }
 
-            if ((brain.directions[i][1] >= (500/3) && brain.directions[i][1] <= (500/3)+25) && (brain.directions[i][0] >= 500/4 && brain.directions[i][0] <= (500/4)+250)){
+            if ((brain.directions[i][1] >= (1000/3) && brain.directions[i][1] <= (1000/3)+25) && (brain.directions[i][0] >= 1000/4 && brain.directions[i][0] <= (1000/4)+500)){
                 brain.directions[i+1][1] = brain.directions[i][1];
                 brain.directions[i+1][0] = brain.directions[i][0];
             }

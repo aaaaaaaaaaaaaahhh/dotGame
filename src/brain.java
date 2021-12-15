@@ -11,8 +11,8 @@ public class brain {
     }
 
     public void randBrain(){
-        directions[0][0] = 250;
-        directions[0][1] = 350;
+        directions[0][0] = 500;
+        directions[0][1] = 700;
         Random rd = new Random();
         for (int i = 1; i < directions.length; i++) {
             for (int j = 0; j < directions[0].length; j++) {

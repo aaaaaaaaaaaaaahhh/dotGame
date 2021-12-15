@@ -50,11 +50,8 @@ public class population {
             dotScores[i] = dots[i].fitness;
             fitnessSum += dots[i].fitness;
         }
-        System.out.println("fit p: " + fitnessSum);
         fitnessSum = (int)(fitnessSum*1000000000);
-        System.out.println("fit: " + fitnessSum);
         fitnessSum = fitnessSum/1000000000;
-        System.out.println(fitnessSum);
 
         double runningSum = 0;
         double randNum = Math.random() * fitnessSum;
