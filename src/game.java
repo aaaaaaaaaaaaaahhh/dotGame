@@ -10,7 +10,7 @@ public class game {
     }
 
     public game() throws InterruptedException {
-        frame.setSize(500, 500);
+        frame.setSize(1000, 1000);
         frame.setLayout(new GridLayout(1, 1));
         frame.add(panel);
         //frame.setResizable(false);

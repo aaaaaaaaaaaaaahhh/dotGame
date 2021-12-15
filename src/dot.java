@@ -37,8 +37,8 @@ public class dot {
                 brain.directions[i+1][0] = brain.directions[i][0];
                 brain.directions[i+1][1] = brain.directions[i][1];
             }
-            if(brain.directions[i][0] >= 500 || brain.directions[i][0] >= 483){
-                brain.directions[i][0] = 483;
+            if(brain.directions[i][0] >= 1000 || brain.directions[i][0] >= 983){
+                brain.directions[i][0] = 983;
                 brain.directions[i+1][0] = brain.directions[i][0];
                 brain.directions[i+1][1] = brain.directions[i][1];
             }
@@ -47,8 +47,8 @@ public class dot {
                 brain.directions[i+1][1] = brain.directions[i][1];
                 brain.directions[i+1][0] = brain.directions[i][0];
             }
-            if (brain.directions[i][1] >= 500 || brain.directions[i][1] >= 460) {
-                brain.directions[i][1] = 460;// top bar is included in frame, easiest solution
+            if (brain.directions[i][1] >= 1000 || brain.directions[i][1] >= 960) {
+                brain.directions[i][1] = 960;// top bar is included in frame, easiest solution
                 brain.directions[i+1][1] = brain.directions[i][1];
                 brain.directions[i+1][0] = brain.directions[i][0];
             }
@@ -58,12 +58,12 @@ public class dot {
                 brain.directions[i+1][1] = brain.directions[i][1];
                 brain.directions[i+1][0] = brain.directions[i][0];
             }
-            /*
+
             if ((brain.directions[i][1] >= (500/3) && brain.directions[i][1] <= (500/3)+25) && (brain.directions[i][0] >= 500/4 && brain.directions[i][0] <= (500/4)+250)){
                 brain.directions[i+1][1] = brain.directions[i][1];
                 brain.directions[i+1][0] = brain.directions[i][0];
             }
-
+            /*
             if ((brain.directions[i][1] >= 200 && brain.directions[i][1] <= 225 && (brain.directions[i][0] >= 250 && brain.directions[i][0] <= 500))){
                 brain.directions[i+1][1] = brain.directions[i][1];
                 brain.directions[i+1][0] = brain.directions[i][0];

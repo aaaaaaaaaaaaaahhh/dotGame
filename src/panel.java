@@ -12,7 +12,7 @@ public class panel extends JPanel implements ActionListener{
     population pop;
     int i = 0;
     public panel() {
-        timer = new Timer(2, this);
+        timer = new Timer(10, this);
         timer.start();
         pop = new population(500);
         for (int j = 0; j < pop.dots.length; j++) {
