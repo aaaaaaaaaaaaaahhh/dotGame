@@ -27,8 +27,21 @@ public class dot {
 
     public void calcFit(){
         int[] finalDirection = brain.directions[brain.directions.length-1];
-        double distToGoal = Math.sqrt(Math.pow((finalDirection[0]-500), 2) + Math.pow((finalDirection[1]-8), 2));
-        fitness = 1/(distToGoal*distToGoal);
+        if (finalDirection[0] == 500 && finalDirection[1] == 8){
+            int count = 0;
+            for (int i = 0; i < brain.directions.length; i++) {
+                if (i >=1){
+                    if ((brain.directions[i][0] == 500 && brain.directions[i][1] == 8) && (brain.directions[i-1][0] != 500 && brain.directions[i-1][1] != 8)){
+                        count = i-1;
+                    }
+                }
+            }
+            fitness = 1/count;
+            System.out.println("fit:" + fitness);
+        } else {
+            double distToGoal = Math.sqrt(Math.pow((finalDirection[0]-500), 2) + Math.pow((finalDirection[1]-8), 2));
+            fitness = 1/(distToGoal*distToGoal);
+        }
     }
 
     public void collisions(){
@@ -63,6 +76,7 @@ public class dot {
             if ((brain.directions[i][1] >= (1000/3) && brain.directions[i][1] <= (1000/3)+25) && (brain.directions[i][0] >= 1000/4 && brain.directions[i][0] <= (1000/4)+500)){
                 brain.directions[i+1][1] = brain.directions[i][1];
                 brain.directions[i+1][0] = brain.directions[i][0];
+                fitness = fitness - (fitness/2);
             }
             /*
             if ((brain.directions[i][1] >= 200 && brain.directions[i][1] <= 225 && (brain.directions[i][0] >= 250 && brain.directions[i][0] <= 500))){

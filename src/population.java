@@ -11,6 +11,7 @@ public class population {
 ;        for (int i = 0; i < numPop; i++) {
             dots[i] = new dot();
             dots[i].collisions();
+            System.out.println(dots[i].fitness);
         }
     }
 
@@ -26,14 +27,14 @@ public class population {
     }
 
     public void mutate(){
-        int mutate_rate = 25; // on scale of a hundred, so 25 percent
+        int mutate_rate = 50; // on scale of a hundred, so 25 percent
         for (int i = 0; i < dots.length; i++) {
             for (int j = 0; j < dots[i].brain.directions.length; j++) {
                 Random rd = new Random();
                 if (rd.nextInt(100) <= mutate_rate){
                     if (j != 0){
-                        dots[i].brain.directions[j][0] = dots[i].brain.directions[j-1][0] + rd.nextInt()%40;
-                        dots[i].brain.directions[j][1] = dots[i].brain.directions[j-1][1] + rd.nextInt()%40;
+                        dots[i].brain.directions[j][0] = dots[i].brain.directions[j-1][0] + rd.nextInt()%20;
+                        dots[i].brain.directions[j][1] = dots[i].brain.directions[j-1][1] + rd.nextInt()%20;
                     }
                 }
             }
