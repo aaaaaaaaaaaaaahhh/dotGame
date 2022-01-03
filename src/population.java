@@ -7,11 +7,11 @@ import java.util.Random;
 public class population {
     dot[] dots;
     public population(int numPop){
-        dots = new dot[numPop]
-;        for (int i = 0; i < numPop; i++) {
+        dots = new dot[numPop];
+        for (int i = 0; i < numPop; i++) {
             dots[i] = new dot();
             dots[i].collisions();
-            System.out.println(dots[i].fitness);
+            //System.out.println(dots[i].fitness);
         }
     }
 
@@ -27,7 +27,7 @@ public class population {
     }
 
     public void mutate(){
-        int mutate_rate = 50; // on scale of a hundred, so 25 percent
+        int mutate_rate = 25; // on scale of a hundred, so 25 percent
         for (int i = 0; i < dots.length; i++) {
             for (int j = 0; j < dots[i].brain.directions.length; j++) {
                 Random rd = new Random();
@@ -67,7 +67,7 @@ public class population {
         }
 
 
-        System.out.println(Arrays.deepToString(best.brain.directions));
+        //System.out.println(Arrays.deepToString(best.brain.directions));
         return best;
     }
 }

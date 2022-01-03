@@ -28,7 +28,7 @@ public class dot {
     public void calcFit(){
         int[] finalDirection = brain.directions[brain.directions.length-1];
         if (finalDirection[0] == 500 && finalDirection[1] == 8){
-            int count = 0;
+            int count = 1;
             for (int i = 0; i < brain.directions.length; i++) {
                 if (i >=1){
                     if ((brain.directions[i][0] == 500 && brain.directions[i][1] == 8) && (brain.directions[i-1][0] != 500 && brain.directions[i-1][1] != 8)){
@@ -72,7 +72,6 @@ public class dot {
                 brain.directions[i+1][1] = brain.directions[i][1];
                 brain.directions[i+1][0] = brain.directions[i][0];
             }
-
             if ((brain.directions[i][1] >= (1000/3) && brain.directions[i][1] <= (1000/3)+25) && (brain.directions[i][0] >= 1000/4 && brain.directions[i][0] <= (1000/4)+500)){
                 brain.directions[i+1][1] = brain.directions[i][1];
                 brain.directions[i+1][0] = brain.directions[i][0];
