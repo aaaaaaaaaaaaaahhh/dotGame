@@ -27,24 +27,27 @@ public class dot {
 
     public void calcFit(){
         int[] finalDirection = brain.directions[brain.directions.length-1];
+        double steps = 1;
+
         if (finalDirection[0] == 500 && finalDirection[1] == 8){
-            int count = 1;
+            //double steps = 1; // count is the number of steps that a dot takes to get to the goal
             for (int i = 0; i < brain.directions.length; i++) {
                 if (i >=1){
-                    if ((brain.directions[i][0] == 500 && brain.directions[i][1] == 8) && (brain.directions[i-1][0] != 500 && brain.directions[i-1][1] != 8)){
-                        count = i-1;
+                    if ((brain.directions[i][0] == 500 && brain.directions[i][1] == 8) && (brain.directions[i-1][0] != 500 && brain.directions[i-1][1] != 8)){ // checking for first step in the goal
+                        steps = i-1;
                     }
                 }
             }
-            fitness = 1/count;
-            System.out.println("fit:" + fitness);
+            System.out.println(steps);
+            fitness = 1/steps;
+            // System.out.println("fit:" + fitness);
         } else {
-            double distToGoal = Math.sqrt(Math.pow((finalDirection[0]-500), 2) + Math.pow((finalDirection[1]-8), 2));
+            double distToGoal = Math.sqrt(Math.pow((finalDirection[0]-500), 2) + Math.pow((finalDirection[1]-8), 2)); // for if the dot does not reach the goal
             fitness = 1/(distToGoal*distToGoal);
         }
     }
 
-    public void collisions(){
+    public void collisions(){ // handles when the dot goes out of bounds
         for (int i = 0; i < brain.directions.length-1; i++) {
             if (brain.directions[i][0] <= 0 || brain.directions[i][0] <= 2) {
                 brain.directions[i][0] = 2;

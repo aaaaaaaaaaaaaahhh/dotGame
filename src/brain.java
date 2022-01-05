@@ -5,12 +5,12 @@ public class brain {
     int[][] directions;
     int numDirects;
 
-    public brain(int numDirections){
+    public brain(int numDirections){ // makes a nested array
         directions = new int[numDirections][2];
         numDirects = numDirections;
     }
 
-    public void randBrain(){
+    public void randBrain(){ // creates a random brain
         directions[0][0] = 500;
         directions[0][1] = 700;
         Random rd = new Random();
