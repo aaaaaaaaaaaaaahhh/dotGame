@@ -38,7 +38,7 @@ public class dot {
                     }
                 }
             }
-            System.out.println(steps);
+            // System.out.println(steps);
             fitness = 1/steps;
             // System.out.println("fit:" + fitness);
         } else {
